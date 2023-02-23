@@ -1,0 +1,117 @@
+<div>
+  <div>
+    <h1>
+      <%=@the_user.first_name%>'s Bookmarks
+    </h1>
+
+    
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new bookmark
+    </h2>
+
+    <form action="/insert_bookmark" method="post">
+ 
+
+      <div>
+        <label for="movie_id_box">
+          Movie
+        </label>
+
+        <select id="movie_id_box" name="query_movie_id">
+        <%Movie.all.each do |a_movie|%>
+          <option value ="<%=a_movie.id%>">
+                  <%=a_movie.title%>
+          </option>
+        <%end%>
+        </select>
+
+
+
+      </div>
+
+      <button>
+        Bookmark this movie!
+      </button>
+    </form>
+  </div>
+</div>
+
+    <div>
+      <div>
+        <a href="/bookmarks">
+          Go back
+        </a>
+      </div>
+
+
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_bookmark.user_id %>
+      </dd>
+
+      <dt>
+        Movie
+      </dt>
+      <dd>
+        <%= @the_bookmark.movie_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_bookmark.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_bookmark.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit bookmark
+    </h2>
+
+    <form action="/modify_bookmark/<%= @the_bookmark.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_bookmark.user_id %>">
+      </div>
+
+      <div>
+        <label for="movie_id_box">
+          Movie
+        </label>
+
+        <input type="text" id="movie_id_box" name="query_movie_id" value="<%= @the_bookmark.movie_id %>">
+      </div>
+
+      <button>
+        Update bookmark
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

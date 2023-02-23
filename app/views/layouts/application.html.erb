@@ -15,6 +15,19 @@
   </head>
 
   <body>
+    <ul>
+      	<li><a href = "/movies">Movies</a></li>
+        <li><a href = "/directors">Directors</a></li>
+        <li><a href = "/actos">Actors</a></li>
+        <li><a href = "/characters">Characters</a></li>
+        <%if session.fetch(:user_id) != nil%>
+        <li><a href = "/bookmarks">My bookmarks</a></li>
+        <li><a href = "/user_sign_out">User Sign Out</a></li>
+        <%else%>
+        <li><a href = "/user_sign_up">User Sign Up</a></li>
+        <li><a href = "/user_sign_in">User Sign In</a></li>
+        <%end%>
+    </ul>
     <%= yield %>
   </body>
 </html>
