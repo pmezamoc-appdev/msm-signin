@@ -12,7 +12,7 @@ class BookmarksController < ApplicationController
     	
     @the_user = User.where({:id => the_id}).first
 
-    @the_bookmark = Bookmark.where({ :user_id => the_id }).all
+    @list_of_bookmarks = Bookmark.where({ :user_id => the_id }).all
 
     render({ :template => "bookmarks/show.html.erb" })
   end
